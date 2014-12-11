@@ -91,7 +91,7 @@ public class Tree {
     
     private Node minValueParent(Node head)
     {
-        while(head.left == null)
+        while(head.left.left != null)
             head = head.left;
         return head;
 
@@ -142,9 +142,17 @@ public class Tree {
             }
             else
             {
+                if(head.right.left != null)
+                {
                 Node minparent = minValueParent(head.right);
                 head.value = minparent.left.value;
                 minparent.left = null;
+                }
+                else
+                {
+                    head.value = head.right.value;
+                    head.right = head.right.right;
+                }
                         
             }
         }
@@ -215,11 +223,15 @@ public class Tree {
     public static void main(String[] args)
     {
         Tree tree= new Tree();
+        tree.insert(10);
         tree.insert(5);
+        tree.insert(12);
         tree.insert(4);
-        tree.insert(2);
-        tree.insert(9);
-        tree.insert(6);
+        tree.insert(7);
+        System.out.println("--sum of paths---");
+        SumOfPaths path = new SumOfPaths();
+        path.getPath(tree.root, 22);
+        System.out.println("---inorder---");
         tree.inorder(tree.root);
         System.out.println("---height of tree--");
         System.out.println(tree.heightOfTree());

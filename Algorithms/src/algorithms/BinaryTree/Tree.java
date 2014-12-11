@@ -6,6 +6,9 @@
 
 package algorithms.BinaryTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  *
  * @author coolp_000
@@ -176,6 +179,39 @@ public class Tree {
         System.out.println(root.value);
     }
     
+    public int heightOfTree()
+    {
+        Queue<Node> q = new LinkedList<>();
+        int height = 0;
+        if(root != null)
+        {
+         q.add(root);
+        }
+        int nodeCount;
+        while(true)
+        {
+            nodeCount = q.size();
+            if(nodeCount == 0)
+            {
+                return height;
+            }
+            height++;
+            while(nodeCount > 0)
+            {
+                Node parent = q.remove();
+                if (parent.left != null)
+                {
+                    q.add(parent.left);
+                }
+                if (parent.right != null)
+                {
+                    q.add(parent.right);
+                }
+                nodeCount--;
+            }
+        }  
+    }
+    
     public static void main(String[] args)
     {
         Tree tree= new Tree();
@@ -185,17 +221,19 @@ public class Tree {
         tree.insert(9);
         tree.insert(6);
         tree.inorder(tree.root);
+        System.out.println("---height of tree--");
+        System.out.println(tree.heightOfTree());
         System.out.println("--- post order--");
         tree.postorder(tree.root);
         System.out.println("-- pre order");
         tree.preorder(tree.root);
-        System.out.println("delete 5");
+        System.out.println("---delete 5---");
         tree.delete(tree.root, 5);
         tree.inorder(tree.root);
-        System.out.println("delete 9");
+        System.out.println("---delete 9---");
         tree.delete(tree.root, 9);
         tree.inorder(tree.root);
-        System.out.println("delete 6");
+        System.out.println("---delete 6---");
         tree.delete(tree.root, 6);
         tree.inorder(tree.root);
     }

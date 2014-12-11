@@ -96,6 +96,65 @@ public class Tree {
         return head;
 
     }
+    
+    private boolean present(Node head, int value)
+    {
+       while(head != null)
+       {
+           if(head.value == value)
+           {
+               return true;
+           }
+           else if (value < head.value)
+           {
+               head = head.left;
+           }
+           else if(value > head.value)
+           {
+               head = head.right;
+           }
+       }
+       return false;
+    }
+    
+    public Node LCA(Node head, int first, int second)
+    {
+        if(head == null)
+        {
+            return null;
+        }
+        int left;
+        int right;
+        if (first < second)
+        {
+            left = first;
+            right = second;
+        }
+        else
+        { 
+            left = second;
+            right = first;
+        }
+        while(root != null)
+        {
+            if (left < head.value && right < head.value)
+            {
+                head = head.left;
+            }
+
+            else if ( left > head.value && right > head.value)
+            {
+  		head = head.right;
+            }
+            else if ( present(head.left, left) && present(head.right, right))
+            {
+    		return head;
+            }
+            else
+                break;
+        }
+        return null;
+    }
 
     
     public void delete(Node head, int value)
@@ -110,7 +169,7 @@ public class Tree {
         else
         {
 
-            if (head.left == null & head.right == null)
+            if (head.left == null && head.right == null)
             {
                 //System.out.println(head.value);
                 if (head.value == root.value)
@@ -228,6 +287,8 @@ public class Tree {
         tree.insert(12);
         tree.insert(4);
         tree.insert(7);
+        System.out.println("--lca--");
+        System.out.println(tree.LCA(tree.root, 5, 12).value);
         System.out.println("--sum of paths---");
         SumOfPaths path = new SumOfPaths();
         path.getPath(tree.root, 22);

@@ -111,7 +111,6 @@ public class Graph {
             Node child = unvisited(n);
             if( child!= null)
             {
-                //System.out.println(child.value);
                 child.visited = true;
                 System.out.println(child.value);
                 s.add(child);

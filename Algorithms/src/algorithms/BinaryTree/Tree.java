@@ -228,6 +228,21 @@ public class Tree {
         inorder(root.right);
     }
     
+    public static boolean isBST(Node root, int min, int max)
+    {
+        if (root == null)
+        {
+            return true;
+        }
+        if(root.value < min || root.value > max)
+        {
+            return false;
+        }
+        return isBST(root.left, min, root.value) 
+               && isBST(root.right, root.value, max);
+        
+    }
+    
     public void preorder(Node root)
     {
         if (root == null)
@@ -287,6 +302,25 @@ public class Tree {
         tree.insert(12);
         tree.insert(4);
         tree.insert(7);
+        //creating binary tree for testing
+        Node fakeroot = new Node();
+        fakeroot.value = 3;
+        Node fakenode =  new Node();
+        fakenode.value = 2;
+        Node fakenode2 =  new Node();
+        fakenode2.value = 5;
+        fakeroot.left = fakenode;
+        fakeroot.right = fakenode2;
+        Node fakenode3 =  new Node();
+        fakenode3.value = 1;
+        Node fakenode4 =  new Node();
+        fakenode4.value = 4;
+        fakenode.left=fakenode3;
+        fakenode.right = fakenode4;
+        System.out.println("testing binary tree for BST");
+        System.out.println(isBST(tree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        System.out.println("--testing binary tree for BST");
+        System.out.println(isBST(fakeroot, Integer.MIN_VALUE, Integer.MAX_VALUE));
         System.out.println("--lca--");
         System.out.println(tree.LCA(tree.root, 5, 12).value);
         System.out.println("--sum of paths---");

@@ -20,3 +20,6 @@ Given a binary search tree, find its height
 ### 4. IsBST:
 Given a binary tree, check if its a binary search tree
 #####Solution is in Tree.java, method isBST
+### 5. BST to Doubly linked list:
+Convert a binary search tree to a sorted double-linked list.
+#####Solution is in BSTtoLinkedList

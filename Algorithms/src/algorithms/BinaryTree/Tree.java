@@ -302,7 +302,7 @@ public class Tree {
         tree.insert(12);
         tree.insert(4);
         tree.insert(7);
-        //creating binary tree for testing
+        //converting bst into doubly linked link list
         Node fakeroot = new Node();
         fakeroot.value = 3;
         Node fakenode =  new Node();

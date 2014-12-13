@@ -19,4 +19,4 @@ Given a binary search tree, find its height
 #####Solution is in Tree.java, method heightOfTree
 ### 4. IsBST:
 Given a binary tree, check if its a binary search tree
-#####Solution is in Tree.java, method isBST()
+#####Solution is in Tree.java, method isBST

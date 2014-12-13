@@ -44,6 +44,18 @@ public class SumOfPaths {
         getPath(root.right, value-root.value);
         stack.pop();
     }
+    public static void main(String[] args)
+    {
+        Tree tree= new Tree();
+        tree.insert(10);
+        tree.insert(5);
+        tree.insert(12);
+        tree.insert(4);
+        tree.insert(7);
+        System.out.println("--sum of paths---");
+        SumOfPaths path = new SumOfPaths();
+        path.getPath(tree.root, 22);
+    }
     
     
 }

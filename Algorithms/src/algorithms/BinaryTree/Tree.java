@@ -323,9 +323,6 @@ public class Tree {
         System.out.println(isBST(fakeroot, Integer.MIN_VALUE, Integer.MAX_VALUE));
         System.out.println("--lca--");
         System.out.println(tree.LCA(tree.root, 5, 12).value);
-        System.out.println("--sum of paths---");
-        SumOfPaths path = new SumOfPaths();
-        path.getPath(tree.root, 22);
         System.out.println("---inorder---");
         tree.inorder(tree.root);
         System.out.println("---height of tree--");

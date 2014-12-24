@@ -8,6 +8,7 @@ package algorithms.BinaryTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  *
@@ -19,6 +20,117 @@ public class Tree {
     {
         insert(root, value);
     }
+    
+    public boolean checkSum(Node start, int sum)
+    {
+        Stack<Node> previous = new Stack<>();
+        Stack<Node> next = new Stack<>();
+        
+        buildprevious(previous,start);
+        buildnext(next,start);
+        Node prevNode = getPrevious(previous);
+        Node nextNode = getNext(next);
+        while(prevNode != null && nextNode != null && prevNode != nextNode)
+        {
+            int result = prevNode.value + nextNode.value;
+            if(result == sum)
+            {
+                return true;
+            }
+            if(result < sum)
+            {
+                prevNode = getPrevious(previous);
+            }
+            else
+            {
+                nextNode = getNext(next);
+            }
+        }
+        return false;
+    }
+    
+    private void buildprevious(Stack<Node> previous, Node temp)
+    {
+        previous.add(temp);
+        while(temp != null)
+        {
+            previous.add(temp);
+            temp=temp.left; 
+        }
+               
+    }
+    private void buildnext(Stack<Node> next, Node temp)
+    {
+        next.add(temp);
+        while(temp !=null)
+        {
+            next.add(temp);
+            temp = temp.right;  
+        }
+    }
+    
+    private Node getNext(Stack<Node> next)
+    {
+        Node temp = null;
+        if(!next.empty())
+        {
+            temp = next.pop();
+            Node templeft = temp.left;
+            while(templeft !=null)
+            {
+                next.add(templeft);
+                templeft = templeft.right;    
+            }    
+        }
+        return temp;
+    }
+    private Node getPrevious(Stack<Node> next)
+    {
+        Node temp = null;
+        if(!next.empty())
+        {
+            temp = next.pop();
+            Node tempright = temp.right;
+            while(tempright !=null)
+            {
+                next.add(tempright);
+                tempright = tempright.left;    
+            }
+            
+        }
+        return temp;
+    }
+    
+    public boolean verifyBSTPreorder(int [] array, int start, int end)
+    {
+ 
+        int rootval = array[end];
+        int i = start;
+        for(;i<end;i++)
+        {
+            if (array[i] > rootval)
+            {
+                break;
+            }
+        }
+        int j =i;
+        for(;j<end; j++)
+        {
+            if(array[j] < rootval)
+            {
+                return false;
+            }
+                
+        }
+        boolean left = true;
+        if( i-1 >= 0 && start < i-1 && start >= 0)
+            left = verifyBSTPreorder(array, start,i-1);
+        boolean right = true;
+        if(end-1 > i)
+            right = verifyBSTPreorder(array, i, end-1);
+        return right&&left;                
+    }
+    
     private void insert(Node head, int value)
     {
         if(head == null)
@@ -261,6 +373,9 @@ public class Tree {
         System.out.println(root.value);
     }
     
+    
+    
+    
     public int heightOfTree()
     {
         Queue<Node> q = new LinkedList<>();
@@ -302,6 +417,11 @@ public class Tree {
         tree.insert(12);
         tree.insert(4);
         tree.insert(7);
+        System.out.println("--checking the verify BSTPreorder--");
+        int[] arrayofint= {5, 7, 6, 9, 11, 10, 8};
+        System.out.println(tree.verifyBSTPreorder(arrayofint, 0, arrayofint.length-1));
+        System.out.println("--checking test sum--");
+        System.out.println(tree.checkSum(tree.root, 45));
         //converting bst into doubly linked link list
         Node fakeroot = new Node();
         fakeroot.value = 3;

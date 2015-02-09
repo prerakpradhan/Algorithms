@@ -29,3 +29,6 @@ Check if there are any two nodes with a given sum in the tree.
 ### 7. PreOrder and InOrder to BT:
 Given a PreOrder and an InOrder Traversal construct the Binary Tree
 #####Solution is in BinaryTreefromPreandIn
+### 8. Nodes with K number of Leaves
+Implement a function which returns list of all nodes in a binary tree having a given number of leaves, say k .
+#####Solution is in BinaryTreefromPreandIn, method is NoOfLeaves

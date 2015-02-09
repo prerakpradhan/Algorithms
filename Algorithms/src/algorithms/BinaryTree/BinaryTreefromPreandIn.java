@@ -6,6 +6,10 @@
 
 package algorithms.BinaryTree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  *
  * @author coolp_000
@@ -59,6 +63,47 @@ public class BinaryTreefromPreandIn {
         }
     }
     
+    public ArrayList NoOfLeaves(Node root, int k)
+    {
+        Queue queue = new LinkedList();
+        queue.add(root);
+        ArrayList<Node> nodes = new ArrayList<>();
+        while(!queue.isEmpty())
+        {
+            Node node = (Node)queue.remove();
+            ArrayList<Node> leaves = new ArrayList<>();
+            countLeaves(node, leaves);
+            if ((leaves.size() == k) && (node.right != null || node.left!=null))
+            {
+                nodes.add(node);
+            }
+            if(node.left != null)
+            {
+                queue.add(node.left);
+            }
+            if(node.right != null)
+            {
+                queue.add(node.right);
+            }
+        }
+        return nodes;
+        
+    }
+    
+    private void countLeaves(Node root, ArrayList<Node> array)
+    {
+        if(root!=null)
+        {
+           countLeaves(root.left, array);
+           if(root.left==null && root.right == null)
+           {
+               array.add(root);
+           }
+           countLeaves(root.right, array);
+        }
+        
+    }
+    
     public static void main(String[] args)
     {
         int[] pre = {5,8,3,4,7,1};
@@ -66,6 +111,12 @@ public class BinaryTreefromPreandIn {
         BinaryTreefromPreandIn m = new BinaryTreefromPreandIn();
         Node root = m.build(pre, in, 0, pre.length-1, 0, in.length-1);
         m.inOrder(root);
+        ArrayList<Node> nodesWithLeaves = m.NoOfLeaves(root, 3);
+        for(Node n : nodesWithLeaves)
+        {
+            System.out.println(n.value);
+        }
+        
             
                 
         

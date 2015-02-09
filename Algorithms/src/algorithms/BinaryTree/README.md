@@ -23,3 +23,6 @@ Given a binary tree, check if its a binary search tree
 ### 5. BST to Doubly linked list:
 Convert a binary search tree to a sorted double-linked list.
 #####Solution is in BSTtoLinkedList
+### 6. CheckSum:
+Check if there are any two nodes with a given sum in the tree.
+#####Solution is in Tree.java, method is CheckSum

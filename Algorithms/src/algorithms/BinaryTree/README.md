@@ -26,3 +26,6 @@ Convert a binary search tree to a sorted double-linked list.
 ### 6. CheckSum:
 Check if there are any two nodes with a given sum in the tree.
 #####Solution is in Tree.java, method is CheckSum
+### 6. PreOrder and InOrder to BT:
+Given a PreOrder and an InOrder Traversal construct the Binary Tree
+#####Solution is in BinaryTreefromPreandIn

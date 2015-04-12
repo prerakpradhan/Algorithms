@@ -1,5 +1,5 @@
-#Binary Tree:
-The binary tree code is in Tree.java, insert is done by the method insert. 
+#Binary Search Tree:
+The binary Search tree code is in Tree.java, insert is done by the method insert. 
 
 Height of tree of the binary tree is done by method heightOfTree
 

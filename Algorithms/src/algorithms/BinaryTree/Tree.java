@@ -237,6 +237,7 @@ public class Tree {
         }
         int left;
         int right;
+        
         if (first < second)
         {
             left = first;
@@ -409,6 +410,56 @@ public class Tree {
         }  
     }
     
+    public static int[] getDiameter(Node root) {
+    int[] result = new int[]{0,0};    //1st element: diameter, 2nd: height    
+    if (root == null)  return result;
+    int[] leftResult = getDiameter(root.left);
+    int[] rightResult = getDiameter(root.right);
+    int height = Math.max(leftResult[1], rightResult[1]) + 1;
+    int rootDiameter = leftResult[1] + rightResult[1] + 1;
+    int leftDiameter = leftResult[0];
+    int rightDiameter = rightResult[0];
+    result[0] = Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
+    result[1] = height;
+    return result;
+}
+    
+    public void printSprial()
+    {
+        int height = heightOfTree();
+        boolean alt= false;
+        for(int i=1;i<=height; i++)
+        {
+            printSpiralLevel(root,i,alt);
+            alt = !alt;
+        }
+        
+    }
+    private void printSpiralLevel(Node head,int level,boolean alt)
+    {
+        if(head == null)
+        {
+            return;
+        }
+        else if(level == 1)
+        {
+            System.out.println(head.value);
+        }
+        else if(level > 1)
+        {
+            if(alt)
+            {
+                printSpiralLevel(head.left, level-1, alt);
+                printSpiralLevel(head.right, level-1, alt);
+            }
+            else
+            {
+                printSpiralLevel(head.right, level-1, alt);
+                printSpiralLevel(head.left, level-1, alt);
+            }
+        }
+    }
+    
     public static void main(String[] args)
     {
         Tree tree= new Tree();
@@ -437,6 +488,8 @@ public class Tree {
         fakenode4.value = 4;
         fakenode.left=fakenode3;
         fakenode.right = fakenode4;
+        System.out.println("diameter");
+        System.out.println(getDiameter(tree.root)[0]);
         System.out.println("testing binary tree for BST");
         System.out.println(isBST(tree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
         System.out.println("--testing binary tree for BST");
@@ -449,6 +502,8 @@ public class Tree {
         System.out.println(tree.heightOfTree());
         System.out.println("--- post order--");
         tree.postorder(tree.root);
+        System.out.println("----sprial order--");
+        tree.printSprial();
         System.out.println("-- pre order");
         tree.preorder(tree.root);
         System.out.println("---delete 5---");

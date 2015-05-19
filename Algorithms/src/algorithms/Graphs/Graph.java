@@ -81,6 +81,7 @@ public class Graph {
         Queue q = new LinkedList();
         Node root = this.rootnode;
         q.add(root);
+        
         root.visited = true;
         System.out.println(root.value);
         while(!q.isEmpty())

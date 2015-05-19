@@ -29,6 +29,7 @@ public class QuickSelection {
             }
             else
             {
+                
               return kthSmallest(array, pos+1, right, k-pos+left-1);  
             }
                
@@ -74,6 +75,6 @@ public class QuickSelection {
     {
         int[] arr = {10,5,3,12,11};
         QuickSelection m = new QuickSelection();
-        System.out.println(m.kthSmallest(arr, 0, arr.length-1, 2));
+        System.out.println(m.kthSmallest(arr, 0, arr.length-1, 5));
     }
 }

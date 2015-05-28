@@ -28,8 +28,8 @@ Implement MergeSort.
 find the nextGreatest element in an array of Integers.
 #####Solution is in nextGreat.java
 ### 11. One Non Duplicate
-find the nextGreatest element in an array of Integers.
-#####Solution is in nextGreat.java
+Find the one non duplicate element in an array of elements with duplicates
+#####Solution is in oneNonDuplicate.java
 ### 12. sorted Duplicate
 remove duplicates from a sorted array.
 #####Solution is in sortedDuplicateRemove.java
@@ -69,4 +69,9 @@ Given an array of ints, find the peak element. The peak element is an element wh
 ### 24. RotatedArray Min.
 Given a rotated array find the minimum element in the array.
 ##### Solution is in sortedArrayMin.java
+### 25. Given two sorted arrays, one of length m and the other of length m+n, merge them with constant space
+##### Solution is in mnmerge.java
+### 26. Given a stream of integers, get the top K largest elements
+##### kLargestDataStream.java
+
 

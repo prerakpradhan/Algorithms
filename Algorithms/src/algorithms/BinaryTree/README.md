@@ -56,5 +56,18 @@ Given a binary tree in which each node element contains a number. Find the maxim
 ### 16. Find the closest leaf in a Binary Tree
 Given a Binary Tree and a key ‘k’, find distance of the closest leaf from ‘k’.
 ##### Solution in getCloseLeafDist
+### 17. Find the inorder Sucessor
+Given a parent pointer, find the inorder sucessor of the given Node
+##### Solution in inorderSuccessor.java
+### 18. iteratively inorder 
+Iteratively traverse the tree in inorderFashion.
+##### Solution in iterativeInorder.java
+### 19. iteratively inorder without stack 
+Iteratively traverse the tree in inorderFashion without a stack.
+##### Solution in iterativeInorderStackLess.java
+### 20. lowest common ancestor
+Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
+##### Solution in LCA.java method getLCA.
+
 
 

@@ -12,20 +12,20 @@ package algorithms.BinaryTree;
  */
 public class maxLeafPath {
     
-    public static int sum;
+            
     
-    public static int getMaxLeafPathSum(Node root)
+    public static int getMaxLeafPathSum(Node root, int[] m)
     {
         if(root == null)
         {
             return 0;
         }
-        int left = getMaxLeafPathSum(root.left);
-        int right = getMaxLeafPathSum(root.right);
+        int left = getMaxLeafPathSum(root.left, m);
+        int right = getMaxLeafPathSum(root.right,m);
         int total = left+right +root.value;
-        if(total > sum)
+        if(total > m[0])
         {
-            sum = total;
+            m[0] = total;
         }
         return Math.max(left, right)+root.value;
     }
@@ -70,7 +70,9 @@ public class maxLeafPath {
         Node r13 = new Node();
         r13.value =10;
         root.right.right.right.right.left= r13;
-        System.out.println(sum);
+        int[] m={0};
+        getMaxLeafPathSum(root,m);
+        System.out.println(m[0]);
     }
     
 }

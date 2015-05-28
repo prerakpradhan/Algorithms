@@ -46,7 +46,7 @@ public class LargestSubArraySum {
     
     public static void main(String[] args)
     {
-        int[] arr= {1,100,-3,-1,4,9,5,-10,2};
+        int[] arr= {-100,100,-3,-1,4,9,5,-10,2};
         findMaxSum(arr);
     }
     

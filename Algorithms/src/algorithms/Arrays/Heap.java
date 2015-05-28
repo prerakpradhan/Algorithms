@@ -71,6 +71,29 @@ public class Heap {
         }
     }
     
+    private void swap(int parent, int child)
+    {
+        int temp = storage.get(child);
+        storage.set(child,storage.get(parent));
+        storage.set(parent,temp);
+    }
+    
+    private void rightswap(int parent, int rightchild, int leftchild)
+    {
+        swap(parent, rightchild);
+        parent=rightchild;
+        leftchild=getLeftChild(parent);
+        rightchild=getRightChild(parent);
+    }
+    
+    private void leftswap(int parent, int rightchild, int leftchild)
+    {
+        swap(parent, leftchild);
+        parent = leftchild;
+        leftchild=getLeftChild(parent);
+        rightchild =getRightChild(parent);
+    }
+    
     private void remove_heapify()
     {
         int parent = 0;
@@ -78,27 +101,31 @@ public class Heap {
         int rightchild = getRightChild(0);
         while(true)
         {
-            if ((leftchild <= storage.size()-1)
+            if ((leftchild < storage.size())
+                    && (storage.get(leftchild) < storage.get(parent)) 
+                    && (rightchild <= storage.size() -1) 
+                    && (storage.get(rightchild) < storage.get(parent)))
+            {
+                if(storage.get(leftchild)< storage.get(rightchild))
+                {
+                    leftswap(parent, rightchild, leftchild);
+                    
+                }
+                else
+                {
+                    rightswap(parent, rightchild, leftchild);
+                }
+            }
+            else if ((leftchild < storage.size())
                     && (storage.get(leftchild) < storage.get(parent)))
             {
-                int temp = storage.get(leftchild);
-                storage.set(leftchild,storage.get(parent));
-                storage.set(parent,temp);
-                parent = leftchild;
-                leftchild=getLeftChild(parent);
-                rightchild =getRightChild(parent);
+                leftswap(parent, rightchild, leftchild);
             }
             
             else if ((rightchild <= storage.size() -1) 
                     && (storage.get(rightchild) < storage.get(parent)))
             {
-                int temp = storage.get(rightchild);
-                storage.set(rightchild,storage.get(parent));
-                storage.set(parent,temp);
-                parent=rightchild;
-                leftchild=getLeftChild(parent);
-                rightchild=getRightChild(parent);
-                        
+                rightswap(parent, rightchild, leftchild);          
             }
             else
                 break;
@@ -128,12 +155,27 @@ public class Heap {
     public static void main(String[] args)
     {
         Heap m = new Heap();
-        m.insert(5);
+        m.insert(7);
+        m.insert(20);
+        m.insert(3);
         m.insert(4);
-        m.insert(100);
+        m.insert(13);
+        m.remove();
+        m.insert(5);
+        m.remove();
+        m.insert(16);
+        m.remove();
+        m.insert(17);
         System.out.println(m.getTop());
         m.remove();
         System.out.println(m.getTop());
+        m.remove();
+        System.out.println(m.getTop());
+        m.remove();
+        System.out.println(m.getTop());m.remove();
+        System.out.println(m.getTop());
+        
+        
     }
             
     

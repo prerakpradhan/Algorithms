@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 
-package algorithms.LinkedList;
+package scoringpokerhand;
 
 /**
  *
  * @author coolp_000
  */
-public class Node {
-    public int data;
-    public Node right;
-    public Node down;
-    public Node left;
-   
+public class ScoringPokerHand {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
     
 }

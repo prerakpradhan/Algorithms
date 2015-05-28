@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 
-package algorithms.LinkedList;
+package algorithms.Matrix;
 
 /**
  *
  * @author coolp_000
  */
-public class Node {
-    public int data;
-    public Node right;
-    public Node down;
-    public Node left;
-   
-    
+public class boardPosition {
+    public int x;
+    public int y;
+
+    public boardPosition() {
+        this.y = -1;
+        this.x = -1;
+    }
 }

@@ -42,7 +42,7 @@ public class LIS {
         if(root.left == null && root.right == null)
         {
             store.put(root.value,Integer.toString(root.value));
-            return Integer.toString(root.value);
+            return store.get(root.value);
         }
         String root_excl = getLis(root.left, store)+ ","+ getLis(root.right,store);
         String root_incl = Integer.toString(root.value);

@@ -10,11 +10,13 @@ package algorithms.LinkedList;
  *
  * @author coolp_000
  */
-public class Node {
+public class randomNode {
+    public randomNode random;
     public int data;
-    public Node right;
-    public Node down;
-    public Node left;
-   
+    public randomNode next;
+    public randomNode(int val)
+    {
+        this.data=val;
+    }
     
 }

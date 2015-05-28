@@ -37,13 +37,34 @@ public class SubsetSum {
                     
             }
         }
+  
         return subset[sum][n];
+    }
+    
+    public static boolean subSetSum(int[] arr, int key, int start)
+    {
+        if(key == 0)
+        {
+            return true;
+        }
+        if(start > arr.length-1)
+        {
+            return false;
+        }
+        if(key >= arr[start] && subSetSum(arr,key-arr[start], start+1))
+        {
+            System.out.println(arr[start]);
+            return true;
+        }
+        return subSetSum(arr, key, start+1);
+            
     }
     
     public static void main(String[] args)
     {
         int set[] = {3, 34, 4, 12, 5, 2};
-        int sum = 13;
+        int sum = 8;
         System.out.println(isSubsetSum(set, sum));
+        subSetSum(set, sum, 0);
     }
 }

@@ -73,8 +73,8 @@ public class QuickSelection {
     
     public static void main(String[] args)
     {
-        int[] arr = {10,5,3,12,11};
+        int[] arr = {10,5,3,12,11,2,1,8};
         QuickSelection m = new QuickSelection();
-        System.out.println(m.kthSmallest(arr, 0, arr.length-1, 5));
+        System.out.println(m.kthSmallest(arr, 0, arr.length-1, 8));
     }
 }

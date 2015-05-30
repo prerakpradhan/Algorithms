@@ -18,14 +18,11 @@ public class longestPalindromicSubstring {
        int start = -1;
        int max = 0;
        boolean[][] memory = new boolean[length][length];
-       for(int i=0;i<length;i++)
+       for (int i = 0; i < length; ++i)
        {
-           for(int j=0; j < length; j++)
-           {
-               memory[i][j] = false;
-           }
-           
+          memory[i][i] = true; 
        }
+       
        for(int i=0; i < length-1; i++)
        {
            if(str.charAt(i)==str.charAt(i+1))
@@ -57,7 +54,7 @@ public class longestPalindromicSubstring {
    }
    public static void main(String[] args)
    {
-       getPalindrome("forgeeksskeegfor");
+       getPalindrome("sosd");
    }
     
 }
